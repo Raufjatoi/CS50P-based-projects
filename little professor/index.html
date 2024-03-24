@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Professor Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #0e183a; /* Dark blue background */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        background-color: #1f2a4e; /* Darker blue container */
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+        max-width: 90%;
+    }
+    h1 {
+        color: #ff5733; /* Orange-red heading color */
+        margin-bottom: 20px;
+    }
+    input[type="text"] {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+        background-color: #374785; /* Dark blue input background */
+        color: #fff; /* White text color */
+        width: calc(100% - 40px);
+        margin-bottom: 20px;
+        font-size: 20px;
+    }
+    button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #ff5733; /* Orange-red button background */
+        color: #fff; /* White button text color */
+        cursor: pointer;
+        margin: 5px;
+        font-size: 18px;
+    }
+    .feedback {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        color: #ff5733; /* Orange-red feedback color */
+        font-size: 18px;
+        display: none;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Little Professor Calculator</h1>
+    <div id="problem"></div>
+    <input type="text" id="output">
+    <div class="feedback" id="feedback"></div>
+    <button onclick="calculate()">Check Answer</button>
+</div>
+
+<script>
+    var problems = [];
+    var currentProblemIndex = 0;
+    var attempts = 0;
+
+    function generateProblems(level) {
+        for (var i = 0; i < 10; i++) {
+            var x = generateInteger(level);
+            var y = generateInteger(level);
+            var correctAnswer = x + y;
+            problems.push({
+                x: x,
+                y: y,
+                correctAnswer: correctAnswer
+            });
+        }
+    }
+
+    function generateInteger(level) {
+        if (level === 1) {
+            return Math.floor(Math.random() * 10);
+        } else if (level === 2) {
+            return Math.floor(Math.random() * 90) + 10;
+        } else if (level === 3) {
+            return Math.floor(Math.random() * 900) + 100;
+        }
+    }
+
+    function displayProblem() {
+        var problem = problems[currentProblemIndex];
+        document.getElementById('problem').textContent = problem.x + ' + ' + problem.y + ' = ';
+    }
+
+    function calculate() {
+        var answer = parseInt(document.getElementById('output').value);
+        checkAnswer(answer);
+    }
+
+    function checkAnswer(answer) {
+        var correctAnswer = problems[currentProblemIndex].correctAnswer;
+        if (answer === correctAnswer) {
+            currentProblemIndex++;
+            if (currentProblemIndex < problems.length) {
+                attempts = 0;
+                displayProblem();
+                clearOutput();
+            } else {
+                showScore();
+            }
+        } else {
+            attempts++;
+            if (attempts === 3) {
+                showFeedback(correctAnswer);
+                currentProblemIndex++;
+                attempts = 0;
+                if (currentProblemIndex < problems.length) {
+                    displayProblem();
+                    clearOutput();
+                } else {
+                    showScore();
+                }
+            } else {
+                showFeedback('EEE');
+                clearOutput();
+            }
+        }
+    }
+
+    function showFeedback(message) {
+        var feedback = document.getElementById('feedback');
+        feedback.textContent = message;
+        feedback.style.display = 'block';
+        setTimeout(function() {
+            feedback.style.display = 'none';
+        }, 2000);
+    }
+
+    function showScore() {
+        var score = currentProblemIndex;
+        var playAgain = confirm('Score: ' + score + '/10\n\nDo you want to play again?');
+        if (playAgain) {
+            location.reload();
+        }
+    }
+
+    function clearOutput() {
+        document.getElementById('output').value = '';
+    }
+
+    function promptLevel() {
+        var level;
+        while (true) {
+            level = prompt('Enter the level (1, 2, or 3):');
+            if (level === '1' || level === '2' || level === '3') {
+                break;
+            } else {
+                alert('Invalid level. Please enter 1, 2, or 3.');
+            }
+        }
+        return parseInt(level);
+    }
+
+    var level = promptLevel();
+    generateProblems(level);
+    displayProblem();
+</script>
+
+</body>
+</html>
