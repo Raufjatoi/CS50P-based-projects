@@ -5,4 +5,5 @@ well u can see these mini proljecst and if you like any u can copy the source co
 ## Projects 
 keywords : (...) = comin
 > [Little professor](https://simple-fun-projs.vercel.app/)
+> ...  
 i do done the coding sometimes , but become so lazy to deploy it sry ,tommorow i deploy some 
