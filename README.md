@@ -6,7 +6,7 @@ keywords : (...) = comin
 > [Cryptocurrency Converter](https://cs-50-p-based-projects.vercel.app/)   
 > ....      
 
-i do done the coding sometimes , but become so lazy to deploy it sry ,tommorow i deploy some 
-*incase you want to discover more bout CS50P
+i do done the coding sometimes , but become so lazy to deploy it sry ,tommorow i deploy some  
+#incase you want to discover more bout CS50P
 here is the problems i solved [CS50P practice](https://github.com/Raufjatoi/CS50P-practice)   
 here is the official link , if you want to discover the course : https://cs50.harvard.edu/python/2022/
