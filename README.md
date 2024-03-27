@@ -9,4 +9,4 @@ keywords : (...) = comin
 i do done the coding sometimes , but become so lazy to deploy it sry ,tommorow i deploy some  
 ## incase you want to discover more bout CS50P
 here is the problems i solved [CS50P practice](https://github.com/Raufjatoi/CS50P-practice)   
-here is the official link , if you want to discover the course : https://cs50.harvard.edu/python/2022/
+and here is the official link , if you want to discover more bout the course : https://cs50.harvard.edu/python/2022/
