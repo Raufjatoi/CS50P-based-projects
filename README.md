@@ -1,7 +1,5 @@
-## My simple projs usin chatty 
-hello there , so these are simple projects using html,css and js 
-i can use python but then have to do more in gui so i chosed tha.
-well u can see these mini proljecst and if you like any u can copy the source code and play with it too  , i dont mind may u make it super cool.
+## My projects from CS50P Practice file in GUI version  
+Well, these are some GUI versions of problems that I've converted into projects by adding more features. You can try them out yourself; I've provided the links below. Mostly, I solve these problems in the CLI version as part of my assignment from CS50P. When I find some ideas particularly cool or good, I create their GUI versions and upload them here. So, mostly, I write all the function code. The HTML and CSS code is handled by Chatty. Come on, it's the future. Let's adopt it and work on something more important than HTML and CSS, like real AI projects. But still, check them out below.
 ## Projects 
 keywords : (...) = comin
 > [Little professor](https://simple-fun-projs.vercel.app/)  
