@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CS50P Projects</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: silver; /* Silver background color */
+    color: #333; /* Dark text color */
+  }
+  #header {
+    background-color: #f4f4f4; /* Lighter background for header */
+    color: #333;
+    padding: 20px;
+    text-align: center;
+  }
+  #header h1 {
+    margin: 0;
+  }
+  #header img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer; /* Add pointer cursor for clickable effect */
+  }
+  #header img:hover {
+    transform: scale(1.1);
+  }
+  #header img.left {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+  #header img.right {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  #content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
+  .block {
+    width: 200px;
+    height: 150px; /* Increased height to fit the heading */
+    margin: 10px;
+    border-radius: 10px;
+    cursor: pointer; /* Add pointer cursor for clickable effect */
+    transition: background-color 0.3s ease;
+    overflow: hidden; /* Hide overflowing content */
+    position: relative; /* Position for the heading */
+  }
+  .block h2 {
+    font-size: 16px;
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+  }
+  /* Customize colors for each block */
+  .block:nth-child(odd) {
+    background-color: lightblue; /* Default background color for odd blocks */
+  }
+  .block:nth-child(odd):hover {
+    color: #f4f4f4;
+    background-color: blue; /* Hover background color for odd blocks */
+  }
+  .block:nth-child(even) {
+    background-color: #c980f3;
+  }
+  .block:nth-child(even):hover {
+    color: #f4f4f4;
+    background-color:  #650b99;
+  }
+  /* Add more blocks and customize colors as needed */
+  .block:nth-child(3) {
+    background-color: lightcoral; /* Default background color for block 3 */
+  }
+  .block:nth-child(3):hover {
+    background-color: red; /* Hover background color for block 3 */
+  }
+  .block:nth-child(4) {
+    background-color: lightsalmon; /* Default background color for block 4 */
+  }
+  .block:nth-child(4):hover {
+    background-color: salmon; /* Hover background color for block 4 */
+  }
+  .block:nth-child(5) {
+    background-color: lightgoldenrodyellow; /* Default background color for block 5 */
+  }
+  .block:nth-child(5):hover {
+    background-color: goldenrod; /* Hover background color for block 5 */
+  }
+  .block:nth-child(6) {
+    background-color: lightpink; /* Default background color for block 6 */
+  }
+  .block:nth-child(6):hover {
+    background-color: pink; /* Hover background color for block 6 */
+  }
+  .block:nth-child(7) {
+    background-color: lightcyan; /* Default background color for block 7 */
+  }
+  .block:nth-child(7):hover {
+    background-color: cyan; /* Hover background color for block 7 */
+  }
+  .block:nth-child(8) {
+    background-color: lightseagreen; /* Default background color for block 8 */
+  }
+  .block:nth-child(8):hover {
+    background-color: seagreen; /* Hover background color for block 8 */
+  }
+  .block:nth-child(9) {
+    background-color: lightyellow; /* Default background color for block 9 */
+  }
+  .block:nth-child(9):hover {
+    background-color: yellow; /* Hover background color for block 9 */
+  }
+  .block:nth-child(10) {
+    background-color: lightcoral; /* Default background color for block 10 */
+  }
+  .block:nth-child(10):hover {
+    background-color: coral; /* Hover background color for block 10 */
+  }
+  #footer {
+    background-color: #f4f4f4; /* Lighter background for footer */
+    color: #333;
+    padding: 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+  <div id="header">
+    <img src="IMG_0406.JPG" alt="Your Name" class="left" onclick="window.location.href='https://your-website.com/'">
+    <h1>CS50P Projects</h1>
+    <img src="github.png" alt="GitHub" class="right" onclick="window.location.href='https://github.com/raufjatoi/CS50P-Projects'">
+  </div>
+  <div id="content">
+    <!-- Blocks -->
+    <div class="block" onclick="window.location.href='bitcoin/index.html'">
+      <h2>Currency Converter </h2>
+    </div>
+    <div class="block" onclick="window.location.href='Little professor/index.html'">
+      <h2>Little professor </h2>
+    </div>
+    <div class="block" onclick="window.location.href='project3/index.html'">
+      <h2>Project 3</h2>
+    </div>
+    <div class="block" onclick="window.location.href='project4/index.html'">
+      <h2>Project 4</h2>
+    </div>
+    <div class="block" onclick="window.location.href='project5/index.html'">
+      <h2>Project 5</h2>
+    </div>
+    <div class="block" onclick="window.location.href='project6/index.html'">
+      <h2>Project 6</h2>
+    </div>
+    <div class="block" onclick="window.location.href='project7/index.html'">
+      <h2>Project 7</h2>
+    </div>
+    <div class="block" onclick="window.location.href='project8/index.html'">
+      <h2>Project 8</h2>
+    </div>
+    <div class="block" onclick="window.location.href='project9/index.html'">
+      <h2>Project 9</h2>
+    </div>
+    <div class="block" onclick="window.location.href='project10/index.html'">
+      <h2>Project 10</h2>
+    </div>
+  </div>
+  <div id="footer">
+    <p>By Your Name</p>
+  </div>
+<script>
+  const blocks = document.querySelectorAll('.block');
+
+  blocks.forEach(block => {
+    block.addEventListener('click', function() {
+      // Remove 'clicked' class from all blocks
+      blocks.forEach(b => b.classList.remove('clicked'));
+      // Add 'clicked' class to the clicked block
+      this.classList.add('clicked');
+    });
+  });
+</script>
+</body>
+</html>
