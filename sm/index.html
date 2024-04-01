@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Audio Mixer</title>
+</head>
+<body>
+
+    <div id="controls">
+        <input type="file" id="speechUpload" accept="audio/*">
+        <input type="file" id="beatUpload" accept="audio/*">
+        <button id="mix">Mix Speech with Beat</button>
+    </div>
+
+    <script>
+        document.getElementById('mix').addEventListener('click', () => {
+            const speechFile = document.getElementById('speechUpload').files[0];
+            const beatFile = document.getElementById('beatUpload').files[0];
+            
+            if (!speechFile || !beatFile) {
+                alert('Please upload both speech and beat audio files.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('speech', speechFile);
+            formData.append('beat', beatFile);
+
+            fetch('/mix', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.blob();
+            })
+            .then(blob => {
+                const url = window.URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'mixed_audio.mp3';
+                document.body.appendChild(a);
+                a.click();
+                window.URL.revokeObjectURL(url);
+            })
+            .catch(error => console.error('There was a problem with the fetch operation:', error));
+        });
+    </script>
+</body>
+</html>

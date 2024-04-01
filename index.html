@@ -80,16 +80,17 @@
   }
   /* Add more blocks and customize colors as needed */
   .block:nth-child(3) {
-    background-color: lightcoral; /* Default background color for block 3 */
+    background-color: rgb(240, 135, 135); /* Default background color for block 3 */
   }
   .block:nth-child(3):hover {
-    background-color: red; /* Hover background color for block 3 */
+    background-color: rgb(162, 9, 9); /* Hover background color for block 3 */
   }
   .block:nth-child(4) {
-    background-color: lightsalmon; /* Default background color for block 4 */
+    background-color:  rgb(241, 202, 104); /* Default background color for block 4 */
   }
   .block:nth-child(4):hover {
-    background-color: salmon; /* Hover background color for block 4 */
+    color: #333;
+    background-color: yellow /* Hover background color for block 4 */
   }
   .block:nth-child(5) {
     background-color: lightgoldenrodyellow; /* Default background color for block 5 */
@@ -140,23 +141,23 @@
 </head>
 <body>
   <div id="header">
-    <img src="IMG_0406.JPG" alt="Your Name" class="left" onclick="window.location.href='https://your-website.com/'">
+    <img src="IMG_0406.JPG" alt="Your Name" class="left" onclick="window.location.href=''">
     <h1>CS50P Projects</h1>
     <img src="github.png" alt="GitHub" class="right" onclick="window.location.href='https://github.com/raufjatoi/CS50P-Projects'">
   </div>
   <div id="content">
     <!-- Blocks -->
     <div class="block" onclick="window.location.href='bitcoin/index.html'">
-      <h2>Currency Converter </h2>
+      <h2>Cryptocurrency Converter </h2>
     </div>
     <div class="block" onclick="window.location.href='Little professor/index.html'">
       <h2>Little professor </h2>
     </div>
-    <div class="block" onclick="window.location.href='project3/index.html'">
-      <h2>Project 3</h2>
+    <div class="block" onclick="window.location.href='lines of code/index.html'">
+      <h2>LINES OF CODE </h2>
     </div>
-    <div class="block" onclick="window.location.href='project4/index.html'">
-      <h2>Project 4</h2>
+    <div class="block" onclick="window.location.href='text to file/index.html'">
+      <h2>Text To ASCII Table </h2>
     </div>
     <div class="block" onclick="window.location.href='project5/index.html'">
       <h2>Project 5</h2>
@@ -178,7 +179,7 @@
     </div>
   </div>
   <div id="footer">
-    <p>By Your Name</p>
+    <p>Abdul Rauf JAtoi</p>
   </div>
 <script>
   const blocks = document.querySelectorAll('.block');
