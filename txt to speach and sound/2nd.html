@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Mixer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f5f5f5;
+    }
+
+    .container { 
+      margin: 30px auto;
+      padding: 20px;
+      width: 500px; 
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="file"] {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #0056b3; 
+    }
+
+    audio {
+      margin-top: 20px;
+      width: 100%; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container"> 
+    <h1>Audio Mixer</h1>
+    <input type="file" id="audioFile" accept="audio/*">
+    <button id="mixButton">Mix Audio</button>
+    <audio id="audioPlayer" controls></audio>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audioFileInput = document.getElementById('audioFile');
+      const mixButton = document.getElementById('mixButton');
+      const audioPlayer = document.getElementById('audioPlayer');
+
+      let selectedAudio = null; 
+      const selectedBeat = 'beat.mp3'; // Replace with your beat file name
+
+      audioFileInput.addEventListener('change', function (event) {
+        selectedAudio = event.target.files[0];
+      });
+
+      mixButton.addEventListener('click', function () {
+        if (!selectedAudio) {
+          alert('Please select an audio file.');
+          return;
+        }
+
+        const audioContext = new AudioContext();
+        const audioSource = audioContext.createBufferSource(); 
+        const beatSource = audioContext.createBufferSource(); 
+        const beatGainNode = audioContext.createGain();
+
+        Promise.all([
+          loadAudio(selectedAudio, audioSource),
+          loadAudio(selectedBeat, beatSource) 
+        ]).then(() => {
+          beatGainNode.gain.value = 0.5; // Adjust beat volume if needed
+          beatSource.loop = true;
+
+          audioSource.connect(audioContext.destination); 
+          beatSource.connect(beatGainNode); 
+          beatGainNode.connect(audioContext.destination);
+
+          beatSource.start();
+          setTimeout(() => audioSource.start(), 500); 
+
+          audioPlayer.src = URL.createObjectURL(selectedAudio); // Show uploaded audio
+        }).catch(error => console.error('Error loading or starting audio:', error));
+      });
+
+      function loadAudio(fileOrUrl, audioBufferSource) {
+        return fetch(fileOrUrl)
+          .then(response => response.arrayBuffer())
+          .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+          .then(audioBuffer => audioBufferSource.buffer = audioBuffer);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IP Address Validator</title>
+    <style>
+        body {
+            background-color: #222; /* Dark background */
+            color: white;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .profile-pic {
+            position: absolute;
+            top: 20px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%; 
+        }
+
+        .left { left: 20px; }
+        .right { right: 20px; }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%; 
+            object-fit: cover;
+            border-radius: 50%;
+            filter: grayscale(100%); /* Black and white effect */
+            transition: all 0.3s ease-in-out; /* Added transition effect */
+        }
+
+        .profile-pic:hover img {
+            filter: grayscale(0%); /* Revert to original color */
+            transform: scale(1.1); /* Increase size on hover */
+        }
+    </style>
+</head>
+<body>
+    <h1>NUMB3RS</h1>     
+    <div class="profile-pic left">
+        <a href="" target="_blank">
+            <img src="IMG_0406.JPG" alt="Profile Picture 1">
+        </a>
+    </div>
+
+    <div class="profile-pic right">
+        <a href="https://your-profile-link2" target="_blank">
+            <img src="github.png" alt="Profile Picture 2">
+        </a>
+    </div>
+
+    <div class="container">
+        <h1>IP Address Validator</h1> 
+        <label for="ip-type">Select IP type:</label>
+        <select id="ip-type">
+            <option value="ipv4">IPv4</option>
+            <option value="ipv6">IPv6</option>
+        </select>
+        <input type="text" id="ip-address" placeholder="Enter IP Address">
+        <button onclick="validateIP()">Validate</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function validateIP() {
+            const ipAddress = document.getElementById("ip-address").value;
+            const ipType = document.getElementById("ip-type").value;
+            const resultDiv = document.getElementById("result");
+
+            if (ipType === 'ipv4') {
+                if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(ipAddress)) {
+                    const octets = ipAddress.split('.');
+                    for (let octet of octets) {
+                        if (parseInt(octet) < 0 || parseInt(octet) > 255) {
+                            resultDiv.textContent = "Invalid IPv4 Address";
+                            resultDiv.style.color = "red";
+                            return;
+                        }
+                    }
+                    resultDiv.textContent = "Valid IPv4 Address";
+                    resultDiv.style.color = "green";
+                } else {
+                    resultDiv.textContent = "Invalid IPv4 Address";
+                    resultDiv.style.color = "red";
+                }
+            } else if (ipType === 'ipv6') {
+                if (/^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/.test(ipAddress)) {
+                    resultDiv.textContent = "Valid IPv6 Address";
+                    resultDiv.style.color = "green";
+                } else {
+                    resultDiv.textContent = "Invalid IPv6 Address";
+                    resultDiv.style.color = "red";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
