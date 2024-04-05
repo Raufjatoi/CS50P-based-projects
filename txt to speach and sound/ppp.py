@@ -25,46 +25,75 @@ def generate_and_save_voice(text, output_file):
 
 if __name__ == "__main__":
     text_to_speak = """
-    Hello there, I'm Rauf, here's a song,
-    Let me take you on a journey, it won't be long.
-    About a lad named JB, with dreams to chase,
-    In the melody of life, he found his place.
+    Verse 1
+It's late in the evening; glass on the side
+I've been sat with you for most of the night
+Ignoring everybody here
+We wish they would disappear
+So maybe we could get down now
 
-    Born in a town where the stars rarely gleamed,
-    JB's eyes held visions far beyond what seemed.
-    With a guitar in hand and a heart full of dreams,
-    He strummed his way through life's intricate schemes.
+Chorus
+I need you, darling
+Come on, set the tone
+If you feel like letting me know
+Come on, and let me know
+Do you want me to come on over?
+I need you, darling
+Come on, set the tone
+If you love me
+Come on, get involved
 
-    From the streets of Stratford, where he first sang,
-    To the world's grand stages, where his voice rang.
-    Each chord he played, each note he sang,
-    Was a tale of his journey, where hopes sprang.
+Verse 2
+Oh, let's fall in love again
+Sing!
+Kiss me under the milky twilight
+Lead me out on the moonlit floor
+Lift your open hand
+Strike up the band, and make the fireflies dance
+Silver moon's sparkling
+So kiss me under the milky twilight
+Let's fall in love again
 
-    Through the bustling crowds and the silent nights,
-    JB's music soared to unimaginable heights.
-    With every verse, he wrote his story,
-    A tale of resilience, guts, and glory.
+Chorus
+I need you, darling
+Come on, set the tone
+If you feel like letting me know
+Come on, and let me know
+Do you want me to come on over?
+I need you, darling
+Come on, set the tone
+If you love me
+Come on, get involved
 
-    From humble beginnings, he made his stand,
-    A beacon of hope in a faraway land.
-    Through fame's blinding lights and fortune's call,
-    He remained true, never afraid to fall.
+Bridge
+(Can you feel it?) All the guys in here don't even wanna dance
+Just bring it in closer, oh, closer
+(Can you feel it?) Don't you know baby girl, that this is love?
+And this music's for makin' love
 
-    In the quiet moments, amidst the fame,
-    JB found solace in his own refrain.
-    A melody of memories, a symphony of dreams,
-    His music carried echoes of timeless themes.
+Chorus
+I need you, darling
+Come on, set the tone
+If you love me
+Come on, get involved
 
-    As the years passed by, JB's legacy grew,
-    His songs touching hearts, both old and new.
-    With every strum, with every chord,
-    He inspired souls, struck a universal chord.
+Interlude
+(Sing!) I need you, darling
+(Sing!) If you love me
 
-    So here's to JB, in the hall of fame,
-    Where his music echoes, forever the same.
-    A troubadour of life, a bard of the heart,
-    His melodies linger, never to depart.
+Outro
+Woah-oh (can you feel it?)
+Before the beat kicks in again? Can you feel it? Can you feel it?
+Woah-oh
+Woah-oh-oh, no, no, no, ow!
+Won't you let me know?
+Won't you let me know?
+Can you feel it?
+Can you feel it?
+Can you feel it?
+Before the beat kicks in again? Can you feel it? Can you feel it?
+Won't you let me know?
     """
-    output_file = "cool_melody_voice.wav"
+    output_file = "sing.wav"
     generate_and_save_voice(text_to_speak, output_file)
     print(f"Voice generated and saved as '{output_file}'")

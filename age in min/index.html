@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Season</title>
+    <style>
+        body {
+            background-color: #ffc0cb; /* Light pink background */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff; /* White header background */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .header h1 {
+            text-align: center;
+            flex: 1; /* Flexible width for heading */
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 10px;
+            cursor: pointer; /* Hand cursor on hover */
+        }
+
+        .profile-pic img {
+            transition: filter 0.5s ease-in-out; /* Transition for hover effect */
+        }
+
+        .profile-pic:hover img {
+            filter: grayscale(0); /* Show original color on hover */
+        }
+
+        #profile1 img { /* Default filter for profile 1 */
+            filter: grayscale(1); /* Initially black and white */
+        }
+
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin: auto; /* Center container vertically */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1> SEASONS OF LIFE </h1>
+        <img id="profile1" class="profile-pic" src="IMG_0406.JPG" alt="Profile 1" onclick="openLink1()"> <img class="profile-pic" src="github.png" alt="Profile 2" onclick="openLink2()"> </header>
+
+    <div class="container">
+        <h2>Calculate Your Age in Minutes</h2>
+        <input type="date" id="birthdate">
+        <button onclick="calculateAge()">Calculate</button>
+        <p id="result"></p>
+        <p id="emoji"></p>
+        <p>By Rauf</p>
+    </div>
+
+    <script>
+        function calculateAge() {
+            let birthdateInput = document.getElementById('birthdate').value;
+
+            if (!birthdateInput) {
+                alert("Please enter your date of birth.");
+                return;
+            }
+
+            const birthDate = new Date(birthdateInput);
+            const today = new Date();
+            const differenceInMs = today - birthDate;
+            const differenceInMinutes = differenceInMs / (1000 * 60);
+
+            const result = document.getElementById('result');
+            result.textContent = "You are approximately " + differenceInMinutes.toFixed() + " minutes old.";
+
+            const age = Math.floor(differenceInMinutes / (60 * 24 * 365)); // Calculate age in years
+            const emojiElement = document.getElementById('emoji');
+
+            if (age >= 30) {
+                emojiElement.textContent = "🤪😥👍"; // Silly, sad, like emojis
+            } else {
+                emojiElement.textContent = "";
+            }
+        }
+
+        function openLink1() {
+            // Add your link opening logic here (e.g., window.open("https://example.com"))
+            alert("Opening Profile 1 Link...");
+        }
+
+        function openLink2() {
+            // Add your link opening logic here (e.g., window.open("https://example.com"))
+            alert("Opening Profile 2 Link...");
+        }
+    </script>

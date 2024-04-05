@@ -2,7 +2,7 @@ import soundfile as sf
 import numpy as np
 
 # Load the audio files
-wave_data, wave_samplerate = sf.read("txt to speach and sound/ed.wav")
+wave_data, wave_samplerate = sf.read("txt to speach and sound/sing.wav")
 mp3_data, mp3_samplerate = sf.read("txt to speach and sound/sing.mp3")
 
 # Convert both audio files to mono if they have more than one channel

@@ -22,6 +22,6 @@ def mix_audio_files(speech_file, beat_file, output_file):
 # Example usage
 speech_file = "txt to speach and sound/temp_speech.wav"  # Update the path to your WAV speech file
 beat_file = "1.mp3"  # Update the path to your MP3 beat file
-output_file = "mixed_audio.mp3"
+output_file = "sing_by_ed_audio.mp3"
 
 mix_audio_files(speech_file, beat_file, output_file)
