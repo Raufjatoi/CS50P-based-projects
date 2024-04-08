@@ -56,12 +56,26 @@
             margin: auto; /* Center container vertically */
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         }
+
+        .top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+
+        .top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
     </style>
 </head>
 <body>
     <header class="header">
+        <img class="profile-pic top-left" src="IMG_0406.JPG" alt="Profile 1" onclick="window.open('https://bento.me/rauf', '_blank')">
         <h1> SEASONS OF LIFE </h1>
-        <img id="profile1" class="profile-pic" src="IMG_0406.JPG" alt="Profile 1" onclick="openLink1()"> <img class="profile-pic" src="github.png" alt="Profile 2" onclick="openLink2()"> </header>
+        <img class="profile-pic top-right" src="github.png" alt="Profile 2" onclick="window.open('https://github.com/Raufjatoi/CS50P-based-projects/tree/main/age%20in%20min', '_blank')">
+    </header>
 
     <div class="container">
         <h2>Calculate Your Age in Minutes</h2>
@@ -98,14 +112,6 @@
                 emojiElement.textContent = "";
             }
         }
-
-        function openLink1() {
-            // Add your link opening logic here (e.g., window.open("https://example.com"))
-            alert("Opening Profile 1 Link...");
-        }
-
-        function openLink2() {
-            // Add your link opening logic here (e.g., window.open("https://example.com"))
-            alert("Opening Profile 2 Link...");
-        }
     </script>
+</body>
+</html>
