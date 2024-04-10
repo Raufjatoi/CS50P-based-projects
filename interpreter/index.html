@@ -48,21 +48,150 @@ body {
     transform: scale(1.1); /* Adjust as needed */
   }
   
+  .container {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  input[type="number"] {
+    padding: 10px;
+    margin: 5px;
+    width: 200px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    outline: none;
+  }
+
+  button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    outline: none;
+  }
+
+  button:hover {
+    background-color: #45a049;
+  }
+
+  .result {
+    font-size: 24px;
+    margin-top: 20px;
+  }
 </style>
   
 </head>
 <body>
 <div class="profile-corner">
-  <div class="profile" onclick="location.href='...';" style="margin-left: 20px;">
+  <div class="profile" onclick="location.href='https://medium.com/@raufpokemon00';" style="margin-left: 20px;">
     <img src="IMG_0406.JPG" alt="Profile 1">
   </div>
-  <div class="profile" onclick="location.href='...';" style="margin-right: 20px;">
+  <div class="profile" onclick="location.href='';" style="margin-right: 20px;">
     <img src="github.png" alt="Profile 2">
   </div>
 </div>
 
 <div class="container">
-  <h1>interpreter aka calculator  </h1>
+  <h1>interpreter aka calculator</h1>
+
+  <div id="inputBlocks">
+    <div class="input-block">
+      <input type="number" class="input-number" placeholder="Enter a number">
+      <br>
+    </div>
+  </div>
+  <button onclick="addInputBlock()">Add Block</button>
+  <br>
+  <button onclick="calculate('add')">Add</button>
+  <button onclick="calculate('subtract')">Subtract</button>
+  <button onclick="calculate('multiply')">Multiply</button>
+  <button onclick="calculate('divide')">Divide</button>
+  <button onclick="calculate('mean')">Mean</button>
+  <button onclick="calculate('median')">Median</button>
+  <button onclick="calculate('mode')">Mode</button>
+  <button onclick="calculate('square')">Square</button>
+  <button onclick="calculate('log')">Log</button>
+  <br>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function addInputBlock() {
+  var inputBlocks = document.getElementById("inputBlocks");
+  var newInputBlock = document.createElement("div");
+  newInputBlock.classList.add("input-block");
+  newInputBlock.innerHTML = '<input type="number" class="input-number" placeholder="Enter a number"><br>';
+  inputBlocks.appendChild(newInputBlock);
+}
+
+function calculate(operation) {
+  var inputNumbers = document.querySelectorAll('.input-number');
+  var numbers = [];
+  for (var i = 0; i < inputNumbers.length; i++) {
+    var number = parseFloat(inputNumbers[i].value);
+    if (!isNaN(number)) {
+      numbers.push(number);
+    }
+  }
+  var result;
+  switch (operation) {
+    case 'add':
+      result = numbers.reduce((total, num) => total + num, 0);
+      break;
+    case 'subtract':
+      result = numbers.reduce((total, num) => total - num);
+      break;
+    case 'multiply':
+      result = numbers.reduce((total, num) => total * num, 1);
+      break;
+    case 'divide':
+      result = numbers.reduce((total, num) => total / num);
+      break;
+    case 'mean':
+      result = numbers.reduce((total, num) => total + num, 0) / numbers.length;
+      break;
+    case 'median':
+      numbers.sort((a, b) => a - b);
+      var middle = Math.floor(numbers.length / 2);
+      if (numbers.length % 2 === 0) {
+        result = (numbers[middle - 1] + numbers[middle]) / 2;
+      } else {
+        result = numbers[middle];
+      }
+      break;
+    case 'mode':
+      var modeMap = {};
+      var maxCount = 0;
+      var modes = [];
+      for (var i = 0; i < numbers.length; i++) {
+        var num = numbers[i];
+        modeMap[num] = (modeMap[num] || 0) + 1;
+        if (modeMap[num] > maxCount) {
+          maxCount = modeMap[num];
+          modes = [num];
+        } else if (modeMap[num] === maxCount) {
+          modes.push(num);
+        }
+      }
+      result = modes.length === numbers.length ? 'No mode' : modes.join(', ');
+      break;
+    case 'square':
+      result = numbers.map(num => num * num);
+      break;
+    case 'log':
+      result = numbers.map(num => Math.log(num));
+      break;
+    default:
+      result = 'Invalid operation';
+  }
+  document.getElementById("result").innerHTML = "Result: " + result;
+}
+</script>
 
 </body>
 </html>

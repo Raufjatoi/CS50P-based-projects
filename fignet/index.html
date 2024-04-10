@@ -48,21 +48,89 @@ body {
     transform: scale(1.1); /* Adjust as needed */
   }
   
+  /* Styles for the text block */
+  .text-block {
+    margin: 0 auto;
+    width: 80%;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  }
+
+  /* Styles for the apply button */
+  #applyButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: rgb(255, 102, 102); /* Red */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  #applyButton:hover {
+    background-color: rgb(214, 61, 61); /* Darker red on hover */
+  }
+
 </style>
   
 </head>
 <body>
 <div class="profile-corner">
-  <div class="profile" onclick="location.href='...';" style="margin-left: 20px;">
+  <div class="profile" onclick="location.href='https://www.instagram.com/youreren1/';" style="margin-left: 20px;">
     <img src="IMG_0406.JPG" alt="Profile 1">
   </div>
-  <div class="profile" onclick="location.href='...';" style="margin-right: 20px;">
+  <div class="profile" onclick="location.href='';" style="margin-right: 20px;">
     <img src="github.png" alt="Profile 2">
   </div>
 </div>
 
 <div class="container">
   <h1>Fignet ( a text designer ) </h1>
+  
+  <div class="text-block">
+    <textarea id="textInput" rows="4" cols="50" placeholder="Enter your text here..."></textarea>
+    <br>
+    <select id="fontSelect">
+      <option value="Arial, sans-serif">Arial</option>
+      <option value="Verdana, sans-serif">Verdana</option>
+      <option value="Tahoma, sans-serif">Tahoma</option>
+      <option value="Georgia, serif">Georgia</option>
+      <option value="Times New Roman, serif">Times New Roman</option>
+      <option value="Courier New, monospace">Courier New</option>
+      <option value="Impact, sans-serif">Impact</option>
+      <option value="Lucida Console, monospace">Lucida Console</option>
+      <option value="Comic Sans MS, cursive">Comic Sans MS</option>
+      <option value="Trebuchet MS, sans-serif">Trebuchet MS</option>
+    </select>
+    <br>
+    <button id="applyButton" onclick="applyStyles()">Apply Styles</button>
+  </div>
+  
+  <div id="styledText" style="text-align: center;"></div>
+  <br>
+  <a id="downloadLink" download="styled_text.html" href="#" style="display:none;">Download Styled Text</a>
+
+</div>
+
+<script>
+function applyStyles() {
+  var textInput = document.getElementById("textInput").value;
+  var fontSelect = document.getElementById("fontSelect");
+  var selectedFont = fontSelect.options[fontSelect.selectedIndex].value;
+  var styledText = document.getElementById("styledText");
+  
+  styledText.innerHTML = "<p style='font-family:" + selectedFont + ";'>" + textInput + "</p>";
+  
+  var downloadLink = document.getElementById("downloadLink");
+  downloadLink.href = "data:text/html;charset=utf-8," + escape(styledText.innerHTML);
+  downloadLink.style.display = "block";
+}
+</script>
 
 </body>
 </html>
